@@ -1,18 +1,16 @@
 pipeline {
-	agent any
-	stages {
-		stage('Hello'){
-			steps{
-				echo "Hello from DEMO branch"
-			}
-		}
-		stage('print demo.txt'){
-			when {
-				branch "demo*"
-			}
-			steps{
-				bat 'cat demo.txt'
-			}
-		}
-	}
+    agent any
+    stages {
+        stage('Hello') {
+            steps {
+                echo "Hello from DEMO branch"
+            }
+        }
+        stage('print demo.txt') {
+            steps {
+                bat 'type demo.txt'
+            }
+        }
+    }
 }
+
