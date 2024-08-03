@@ -3,8 +3,11 @@ run-name: Testing our Github actions
 
 on: [push]
 
+env:
+  owner_name: ABhi
+
 jobs:
   basic_workflow:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Job basic_workflow is executing as part of new workflow"
+      - run: echo "Job basic_workflow is executing as part of new workflow - from $owner_name"
