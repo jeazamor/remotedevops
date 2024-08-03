@@ -1,14 +1,21 @@
-name: GitHub actions demo
-run-name: Testing our GitHub actions
+name: Event-based workflow execution
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  basic_workflow:
+  main_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v3
-
-      - name: Run custom action
-        uses: ./path/to/your/action # Replace with the correct relative path to your custom action
+      - name: Print message
+        run: echo "TRIGGERED the main branch workflow - event based"
+      
+      - name: Use reusable workflow
+        uses: ./.github/workflows/reuseme.yml
+        with:
+          # Define any input variables if required by the reusable workflow
